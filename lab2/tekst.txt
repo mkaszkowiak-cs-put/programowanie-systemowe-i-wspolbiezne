@@ -1,0 +1,28 @@
+  PID TTY      STAT   TIME COMMAND
+    1 ?        Sl     0:00 /init
+   10 ?        Ss     0:00 /init
+   11 ?        S      0:00 /init
+   12 pts/0    Ss+    0:00 sh -c "$VSCODE_WSL_EXT_LOCATION/scripts/wslServer.sh" 8fa188b2b301d36553cbc9ce1b0a146ccb93351f stable code-server .vscode-server
+   13 pts/0    S+     0:00 sh /mnt/c/Users/Maciej Kaszkowiak/.vscode/extensions/ms-vscode-remote.remote-wsl-0.72.0/scripts/wslServer.sh 8fa188b2b301d36553c
+   18 pts/0    S+     0:00 sh /home/maciej/.vscode-server/bin/8fa188b2b301d36553cbc9ce1b0a146ccb93351f/bin/code-server --host=127.0.0.1 --port=0 --connecti
+   22 pts/0    Sl+    0:28 /home/maciej/.vscode-server/bin/8fa188b2b301d36553cbc9ce1b0a146ccb93351f/node /home/maciej/.vscode-server/bin/8fa188b2b301d36553
+   42 pts/0    Sl+    0:07 /home/maciej/.vscode-server/bin/8fa188b2b301d36553cbc9ce1b0a146ccb93351f/node /home/maciej/.vscode-server/bin/8fa188b2b301d36553
+ 1897 ?        Ss     0:00 /init
+ 1898 ?        S      0:00 /init
+ 1899 pts/1    Ssl+   0:01 /home/maciej/.vscode-server/bin/8fa188b2b301d36553cbc9ce1b0a146ccb93351f/node -e  const net = require('net'); process.stdin.paus
+ 1906 ?        Ss     0:00 /init
+ 1907 ?        S      0:04 /init
+ 1908 pts/2    Ssl+   0:10 /home/maciej/.vscode-server/bin/8fa188b2b301d36553cbc9ce1b0a146ccb93351f/node -e  const net = require('net'); process.stdin.paus
+ 1915 pts/0    Sl+    0:00 /home/maciej/.vscode-server/bin/8fa188b2b301d36553cbc9ce1b0a146ccb93351f/node /home/maciej/.vscode-server/bin/8fa188b2b301d36553
+ 1928 pts/0    Sl+    1:10 /home/maciej/.vscode-server/bin/8fa188b2b301d36553cbc9ce1b0a146ccb93351f/node /home/maciej/.vscode-server/bin/8fa188b2b301d36553
+ 2012 pts/0    Sl+    0:18 /home/maciej/.vscode-server/extensions/ms-vscode.cpptools-1.12.4-linux-x64/bin/cpptools
+ 2077 pts/0    Sl+    0:03 /home/maciej/.vscode-server/bin/8fa188b2b301d36553cbc9ce1b0a146ccb93351f/node /home/maciej/.vscode-server/bin/8fa188b2b301d36553
+ 2152 pts/3    Ss     0:00 /usr/bin/bash
+ 2336 pts/0    Sl+    0:09 /home/maciej/.vscode-server/extensions/ms-vscode.cpptools-1.12.4-linux-x64/bin/cpptools-srv 2012 {ECB375F1-5F72-4F89-94AD-5978F1
+ 3367 pts/5    Ss+    0:00 /usr/bin/bash
+ 5092 pts/0    Sl+    0:00 /home/maciej/go/bin/gopls -mode=stdio
+ 5414 pts/0    Sl+    0:01 /home/maciej/.vscode-server/extensions/ms-vscode.cpptools-1.12.4-linux-x64/debugAdapters/bin/OpenDebugAD7
+ 5430 pts/3    S+     0:00 /bin/sh /tmp/Microsoft-MIEngine-Cmd-1zz3aani.0dy
+ 5432 pts/3    S      0:00 /usr/bin/gdb --interpreter=mi --tty=/dev/pts/3
+ 5439 ?        Ss     0:00 /home/maciej/systemowe/lab2/main
+ 5444 ?        R      0:00 ps ax
