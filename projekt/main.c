@@ -187,7 +187,13 @@ int cli_thread(int receive_queue, pid_t handler_pid)
         printf("[CLI] Opened the client message queue #%d.\n", client_q_id);
 
         int send_id_int = atoi(send_id);
-        int response_q = msgget(send_id_int, 0666 | IPC_CREAT);
+
+        if (client_q_id == send_id_int) {
+            printf("[CLI] Error! Response queue ID must not match the client queue ID!\n");
+            continue;
+        }
+
+        int response_q = msgget(send_id_int, 0666 | IPC_CREAT | IPC_EXCL);
         if (response_q == -1)
         {
             printf("[CLI] Couldn't create a message queue!\n");
@@ -232,7 +238,7 @@ int main(int argc, char const *argv[])
     int config_id = atoi(config_id_txt);
     printf("[*] Creating message queue under ID %d...\n", config_id);
 
-    int msgid = msgget(config_id, 0666 | IPC_CREAT);
+    int msgid = msgget(config_id, 0666 | IPC_CREAT | IPC_EXCL);
     if (msgid == -1)
     {
         printf("[!] Couldn't create a message queue!\n");
@@ -253,9 +259,3 @@ int main(int argc, char const *argv[])
 
     return 0;
 }
-
-/*
-Examples:
-usr1 ||| ls -la ||| 1000
-usr1 ||| echo "dupa" ||| 1000
-*/
