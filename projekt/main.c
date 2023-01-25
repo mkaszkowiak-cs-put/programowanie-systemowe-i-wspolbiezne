@@ -54,11 +54,6 @@ char *read_from_config(char *search_key)
     return 0;
 }
 
-int read_configuration()
-{
-    return 0;
-}
-
 int handler_thread(int receive_queue)
 {
     printf("[Handler] Now listening under #%d message queue...\n", receive_queue);
@@ -68,26 +63,26 @@ int handler_thread(int receive_queue)
         msgrcv(receive_queue, &command_struct, sizeof(command_struct), 1, 0);
         printf("[Handler] Received a command \"%s\"! Executing it.\n", command_struct.command);
 
-        FILE *ls_cmd = popen(command_struct.command, "r");
-        if (ls_cmd == NULL)
-        {
-            fprintf(stderr, "popen(3) error");
-            exit(EXIT_FAILURE);
-        }
-
         static char buff[2048];
-        size_t n;
+        memset(buff, 0, sizeof buff);
 
-        while ((n = fread(buff, 1, sizeof(buff) - 1, ls_cmd)) > 0)
-        {
-            buff[n] = '\0';
+        int p[2];
+        pipe(p);
+        pid_t pid = fork();
+        if (pid == 0) {
+            close(1);
+            dup(p[1]);
+            close(p[0]);
+            execlp("/bin/bash", "/bin/bash", "-c", command_struct.command, (char *)0);
+            exit(0);
+        } else {
+            read(p[0], buff, 2048);
+            close(p[0]);
         }
-
-        if (pclose(ls_cmd) < 0)
-            perror("pclose(3) error");
 
         struct response_msg response = {
-            .mtype = 1, .response = "xd"};
+            .mtype = 1, .response = ""
+        };
 
         strncpy(response.response, buff, sizeof(response.response));
 
